@@ -1,0 +1,332 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.main-section-content::-webkit-scrollbar {
+  cursor: pointer;
+  width: 10px;
+  height: 5px;
+}
+
+.main-section-content::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.main-section-content::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+/* .main-section-content:hover::-webkit-scrollbar-thumb {
+  cursor: pointer;
+} */
+:root {
+  --color-primary: #2874f0;
+}
+body {
+  background-color: #f1f3f6;
+}
+.navbar {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  margin: 0px auto;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-primary);
+  overflow: hidden;
+}
+.logo {
+  padding: 10px 0px;
+}
+.logo img {
+  width: 75px;
+  height: 20px;
+}
+.sublogo {
+  font-size: 13px;
+  margin-top: -4px;
+  color: white;
+}
+.sublogo img {
+  width: 10px;
+  height: 10px;
+}
+.search {
+  background-color: white;
+  font-size: 16px;
+  margin: 0 16px;
+  width: 550px;
+  height: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 2px 2px 2px 2px;
+  box-shadow: 0 8px 5px -9px black;
+}
+.search input {
+  border: none;
+  outline: none;
+  margin: 0 15px;
+  width: 90%;
+}
+.search svg {
+  width: 20px;
+  height: 20px;
+  margin: 0 6px;
+  fill: var(--color-primary);
+  cursor: pointer;
+}
+.loginBtn {
+  font-size: 16px;
+  background-color: white;
+  color: var(--color-primary);
+  padding: 5px 40px;
+  font-weight: 900;
+  border-radius: 2px;
+  cursor: pointer;
+  border: 1px solid #dbdbdb;
+  height: 32px;
+  margin: 0 25px;
+}
+.nav-other-items {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  letter-spacing: 0.1px;
+  margin: 0 15px;
+  flex: 0 0 auto;
+  max-width: 150px;
+  font-size: 16px;
+  font-weight: 550;
+  color: white;
+}
+.more-class svg,
+.top-image-section svg {
+  margin: 0 5px;
+  transform: rotate(-90deg);
+}
+.cart-class svg {
+  margin: 0 5px;
+}
+.top-section {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 1px 1px 0 rgb(0 0 0 / 16%);
+  background-color: white;
+}
+.top-image-section {
+  height: 112px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 30px;
+  margin-bottom: -20px;
+  text-align: center;
+  cursor: pointer;
+  /* width: 100%; */
+}
+.top-image-section:hover p {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+.top-image-section:hover svg {
+  fill: var(--color-primary);
+  transform: rotate(90deg);
+}
+.top-image-section:hover ul {
+  display: block;
+  text-align: center;
+  width: 10%;
+  top: 15%;
+  z-index: 1;
+  position: absolute;
+  list-style-type: none;
+  background-color: white;
+  border-radius: 2px;
+  padding: 5px;
+  box-shadow: 0px 0px 10px 5px rgb(0 0 0 / 10%);
+  line-height: 30px;
+}
+.top-image-section svg {
+  transition: transform 0.3s ease;
+}
+
+.top-image-section img {
+  width: 64px;
+  height: 64px;
+  transition: transform 0.3s ease;
+}
+.top-image-section:hover img {
+  transform: scale(1.1);
+}
+.top-image-section p {
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+.top-image-section ul {
+  display: none;
+}
+
+.main-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 10px 0px;
+  padding: 8px;
+  overflow: hidden;
+}
+/* main section deals part CSS  */
+
+.main-section-best-deals {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  width: 90%;
+  height: 380px;
+}
+.main-section-deals-left-part {
+  margin-right: 20px;
+  width: 85%;
+  background-color: white;
+}
+.main-section-deals-right-part {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  padding: 5px;
+}
+.main-section-deals-right-part img {
+  width: 100%;
+  height: 100%;
+}
+.top-heading-content-deals {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 15px;
+  padding-left: 10px;
+}
+
+.top-heading-content-deals h2 {
+  font-size: 30px;
+  font-weight: 400;
+}
+.top-heading-content-deals p {
+  font-size: 16px;
+  color: #212121;
+  opacity: 0.6;
+  padding-top: 7px;
+  font-weight: 510;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 10px;
+}
+
+.top-heading-content-deals button {
+  margin-top: 10px;
+}
+/* main section music part CSS  */
+
+.main-section-music {
+  background-color: white;
+  padding: 10px 0;
+  width: 90%;
+  height: 360px;
+  overflow: hidden;
+}
+.top-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1px 1px 0 rgb(0 0 0 / 16%);
+  padding-bottom: 15px;
+}
+.top-heading-content {
+  padding-left: 10px;
+}
+.top-heading-content h2 {
+  font-size: 30px;
+  font-weight: 400;
+}
+.top-heading-content p,
+.main-content-shop {
+  font-size: 14px;
+  color: #212121;
+  opacity: 0.6;
+  padding-top: 7px;
+  font-weight: 510;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.main-content-upto {
+  font-size: 14px;
+  margin: 10px 0px;
+  color: #388e3c;
+  padding-top: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.top-heading-button {
+  padding-right: 20px;
+}
+.top-heading-button button {
+  background: #2874f0;
+  color: #fff;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+  border: none;
+  border-radius: 2px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+}
+.main-section-content {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 1680px;
+  width: 100%;
+  overflow: inherit;
+  overflow-y: hidden;
+  padding-bottom: 30px;
+}
+.main-content {
+  text-align: center;
+  padding: 0 20px;
+}
+.main-content-image {
+  /* margin-top: 20px; */
+  width: 175px;
+  height: 180px;
+}
+.main-content-image img {
+  width: 90%;
+  height: 90%;
+  margin-top: 10px;
+  object-fit: scale-down;
+  transition: transform 0.3s ease;
+}
+.main-content-image img:hover {
+  transform: scale(1.05);
+  overflow: hidden;
+}
+.main-content h5 {
+  font-size: 14px;
+  margin-top: 15px;
+}
