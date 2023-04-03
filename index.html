@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/assets/css/swiper-bundle.min.css" />
+  </head>
+  <body>
+    <section class="navbar">
+      <nav>
+        <h1>Portfolio.</h1>
+        <ul id="sideMenu">
+          <li><a href="#">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#testimonials">Testimonial</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <i class="fa-solid fa-xmark" onclick="toggleMenu('close')"></i>
+        </ul>
+        <i class="fa-solid fa-bars" onclick="toggleMenu('open')"></i>
+      </nav>
+    </section>
+    <section id="home">
+      <div class="container">
+        <div class="home-content">
+          <h2>FullStack Developer</h2>
+          <h1>Hi, I'm <span>Harshit Gupta</span></h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
+            eaque dignissimos nesciunt optio consectetur error, impedit facilis
+            magnam modi iste amet quisquam consequatur aspernatur dolore
+            necessitatibus aut, ex placeat laboriosam.
+          </p>
+
+          <div class="social-media">
+            <a href="#github"><i class="bx bxl-github"></i></a>
+            <a href="#linkdin"><i class="bx bxl-linkedin"></i></a>
+            <a href="#instagram"><i class="bx bxl-instagram"></i></a>
+          </div>
+          <button>Download Cv</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="section-title">My Services</div>
+      <div class="container">
+        <div class="service-list">
+          <div>
+            <i class="fa-solid fa-code"></i>
+            <h2>Web Development</h2>
+            <p>
+              I have experience designing and developing web applications using
+              JavaScript frameworks like Node.js, React.js, and Angular.js. I
+              can build custom web applications from scratch or work with
+              existing codebases to create responsive, high-performance
+              applications.
+            </p>
+            <a href="#">Learn more</a>
+          </div>
+          <div>
+            <i class="fa-solid fa-gears"></i>
+            <h2>API development</h2>
+            <p>
+              I am proficient in developing and maintaining APIs for web
+              applications. I can implement RESTful APIs using Node.js,
+              Express.js, and other technologies to enable seamless
+              communication between front-end and back-end components.
+            </p>
+            <a href="#">Learn more</a>
+          </div>
+          <div>
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+            <h2>Maintenance and support</h2>
+            <p>
+              I can provide ongoing maintenance and support for web
+              applications, including fixing bugs, adding new features, and
+              addressing security concerns. I can work closely with clients to
+              ensure their applications are running smoothly and efficiently.
+            </p>
+            <a href="#">Learn more</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="about">
+      <div class="section-title">About me</div>
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-content">
+            <p>
+              Hi there! My name is Harshit Gupta, and I'm a full stack
+              developer. I've always been passionate about coding and have spent
+              the past few years developing my skills and expertise. I have a
+              particular interest in JavaScript and back-end frameworks like
+              Node and Express.Throughout my academic career, I've worked on
+              several projects that have allowed me to gain hands-on experience
+              with these technologies. I'm also familiar with other programming
+              languages like Java and Python, but I'm particularly passionate
+              about JavaScript and the many possibilities it offers.I also have
+              experience working with databases such as Postgress and
+              MongoDB.<br />
+              Thank you for visiting my portfolio, and please feel free to
+              contact me if you have any questions or would like to discuss
+              potential collaborations!
+            </p>
+          </div>
+          <div class="about-tab">
+            <div class="tab-titles">
+              <p class="tab-links active-link">Skills</p>
+              <p class="tab-links">Experience</p>
+              <p class="tab-links">Education</p>
+            </div>
+            <div class="tab-contents active-tab" id="skills">
+              <ul>
+                <li>
+                  <h3>Frontend</h3>
+                  <span class="skills">
+                    <ul>
+                      <li>
+                        <h4>Html</h4>
+                        <span class="bar">
+                          <span></span>
+                        </span>
+                      </li>
+                      <li>
+                        <h4>Css</h4>
+                        <span class="bar">
+                          <span></span>
+                        </span>
+                      </li>
+                      <li>
+                        <h4>javascript</h4>
+                        <span class="bar">
+                          <span></span>
+                        </span>
+                      </li>
+                      <li>
+                        <h4>React</h4>
+                        <span class="bar">
+                          <span></span>
+                        </span>
+                      </li>
+                    </ul>
+                  </span>
+                </li>
+                <li>
+                  <h3>Backend</h3>
+                  <span class="skills">
+                    <ul>
+                      <li>
+                        <h4>NodeJs</h4>
+                        <span class="bar">
+                          <span></span>
+                        </span>
+                      </li>
+                      <li>
+                        <h4>ExpressJS</h4>
+                        <span class="bar">
+                          <span></span>
+                        </span>
+                      </li>
+                      <li>
+                        <h4>Database</h4>
+                        <span class="bar">
+                          <span></span>
+                        </span>
+                      </li>
+                    </ul>
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <div class="tab-contents" id="experience">
+              <ul>
+                <li>
+                  <h3>2023-Current</h3>
+                  Trainee Engineer at Simform Solutions Pvt Ltd. in Mean Stack
+                  Department
+                </li>
+                <li>
+                  <h3>2022-2023</h3>
+                  Intern at Urbaanac Pvt Ltd. as a FullStack Developer
+                </li>
+              </ul>
+            </div>
+            <div class="tab-contents" id="education">
+              <ul>
+                <li>
+                  <h3>2023</h3>
+                  Completed B.tech in Computer Science from Silver Oak
+                  University
+                </li>
+                <li>
+                  <h3>2019</h3>
+                  Completed Higher Secondary School with Science
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="portfolio">
+      <div class="section-title">My Work</div>
+      <div class="container">
+        <div class="work-list">
+          <div class="work">
+            <img src="/assets/images/work-1.png" alt="" />
+            <div class="layer">
+              <h3>Scientific Calculator</h3>
+              <p>
+                I have develop a scientific calculator as my project that
+                includes advanced features like trigonometric functions,
+                logarithms, and exponential calculations, showcasing my
+                programming skills and ability to create practical applications.
+              </p>
+              <a href=""><i class="fa-solid fa-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <div class="work">
+            <img src="/assets/images/work-2.png" alt="" />
+            <div class="layer">
+              <h3>Flipkart Home Page design</h3>
+              <p>
+                I have designed a replica of the Flipkart homepage using HTML
+                and CSS. This project demonstrates my proficiency in front-end
+                web development and showcases my ability to create visually
+                appealing and functional user interfaces.
+              </p>
+              <a href=""><i class="fa-solid fa-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <div class="work">
+            <img src="/assets/images/work-3.png" alt="" />
+            <div class="layer">
+              <h3>Node Farm</h3>
+              <p>
+                My Node Farm project is a web application built with Node.js
+                that enables users to view and manage a farm's inventory of
+                products. This project showcases my skills in back-end web
+                development, including building a RESTful API, implementing CRUD
+                operations, and using middleware for authentication and error
+                handling.
+              </p>
+              <a href=""><i class="fa-solid fa-up-right-from-square"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="testimonials">
+      <div class="section-title">Testimonials</div>
+      <div class="container">
+        <div class="slide-container swiper">
+          <div class="slide-content">
+            <div class="card-wrapper swiper-wrapper">
+              <div class="card swiper-slide">
+                <div class="image-content">
+                  <span class="overlay"></span>
+
+                  <div class="card-image">
+                    <img
+                      src="/assets/images/profile1.jpg"
+                      alt=""
+                      class="card-img"
+                    />
+                  </div>
+                </div>
+
+                <div class="card-content">
+                  <h2 class="name">David Dell</h2>
+                  <p class="description">
+                    The lorem text the section that contains header with having
+                    open functionality. Lorem dolor sit amet consectetur
+                    adipisicing elit.
+                  </p>
+                </div>
+              </div>
+              <div class="card swiper-slide">
+                <div class="image-content">
+                  <span class="overlay"></span>
+
+                  <div class="card-image">
+                    <img
+                      src="/assets/images/profile2.jpg"
+                      alt=""
+                      class="card-img"
+                    />
+                  </div>
+                </div>
+
+                <div class="card-content">
+                  <h2 class="name">David Dell</h2>
+                  <p class="description">
+                    The lorem text the section that contains header with having
+                    open functionality. Lorem dolor sit amet consectetur
+                    adipisicing elit.
+                  </p>
+                </div>
+              </div>
+              <div class="card swiper-slide">
+                <div class="image-content">
+                  <span class="overlay"></span>
+
+                  <div class="card-image">
+                    <img
+                      src="/assets/images/profile3.jpg"
+                      alt=""
+                      class="card-img"
+                    />
+                  </div>
+                </div>
+
+                <div class="card-content">
+                  <h2 class="name">David Dell</h2>
+                  <p class="description">
+                    The lorem text the section that contains header with having
+                    open functionality. Lorem dolor sit amet consectetur
+                    adipisicing elit.
+                  </p>
+                </div>
+              </div>
+              <div class="card swiper-slide">
+                <div class="image-content">
+                  <span class="overlay"></span>
+
+                  <div class="card-image">
+                    <img
+                      src="/assets/images/profile4.jpg"
+                      alt=""
+                      class="card-img"
+                    />
+                  </div>
+                </div>
+
+                <div class="card-content">
+                  <h2 class="name">David Dell</h2>
+                  <p class="description">
+                    The lorem text the section that contains header with having
+                    open functionality. Lorem dolor sit amet consectetur
+                    adipisicing elit.
+                  </p>
+                </div>
+              </div>
+              <div class="card swiper-slide">
+                <div class="image-content">
+                  <span class="overlay"></span>
+
+                  <div class="card-image">
+                    <img
+                      src="/assets/images/profile5.jpg"
+                      alt=""
+                      class="card-img"
+                    />
+                  </div>
+                </div>
+
+                <div class="card-content">
+                  <h2 class="name">David Dell</h2>
+                  <p class="description">
+                    The lorem text the section that contains header with having
+                    open functionality. Lorem dolor sit amet consectetur
+                    adipisicing elit.
+                  </p>
+                </div>
+              </div>
+              <div class="card swiper-slide">
+                <div class="image-content">
+                  <span class="overlay"></span>
+
+                  <div class="card-image">
+                    <img
+                      src="/assets/images/profile6.jpg"
+                      alt=""
+                      class="card-img"
+                    />
+                  </div>
+                </div>
+
+                <div class="card-content">
+                  <h2 class="name">David Dell</h2>
+                  <p class="description">
+                    The lorem text the section that contains header with having
+                    open functionality. Lorem dolor sit amet consectetur
+                    adipisicing elit.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-button-next swiper-navBtn"></div>
+          <div class="swiper-button-prev swiper-navBtn"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-left">
+            <div class="sub-title">Contact <span>me</span></div>
+            <p>
+              <i class="fa-solid fa-paper-plane"></i>harshgupta9660@gmail.com
+            </p>
+            <p><i class="fa-solid fa-phone"></i>9157826711</p>
+            <div class="social-media">
+              <a href="#github"><i class="bx bxl-github"></i></a>
+              <a href="#linkdin"><i class="bx bxl-linkedin"></i></a>
+              <a href="#instagram"><i class="bx bxl-instagram"></i></a>
+            </div>
+          </div>
+          <div class="contact-right">
+            <form>
+              <input
+                type="text"
+                name="Name"
+                placeholder="Please Type Your Name"
+                required
+              />
+              <input
+                type="email"
+                name="Email"
+                placeholder="Please Type Your Email"
+                required
+              />
+              <textarea
+                name="Message"
+                rows="6"
+                cols="5"
+                placeholder="Please Type Your Message Here!"
+              ></textarea>
+              <button type="submit" class="submit-btn">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="/assets/js/swiper-bundle.min.js"></script>
+    <script src="/assets/js/index.js"></script>
+  </body>
+</html>
