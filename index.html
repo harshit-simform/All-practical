@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration form</title>
+    <link rel="stylesheet" href="form.css" />
+    <script src="./index.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="registration-form">
+        <form action="render.html" id="form" method="get">
+          <h3>Registration Form</h3>
+          <div class="form-div">
+            <label for="name">Name:</label>
+            <input
+              id="name"
+              type="text"
+              name="name"
+              placeholder="Enter your full name"
+              required
+            />
+          </div>
+          <br />
+          <div class="form-div">
+            <label for="email">Email:</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <br />
+          <div class="form-div">
+            <label for="Date-of-birth">DOB:</label>
+            <input
+              id="Date-of-birth"
+              type="date"
+              name="DOB"
+              placeholder="Enter date"
+              required
+            />
+          </div>
+          <br />
+          <div class="form-div">
+            <label for="phone">Phone:</label>
+            <input
+              id="phone"
+              type="tel"
+              name="phone"
+              placeholder="Enter your phone no"
+              maxlength="10"
+              pattern="[0-9]{5}[0-9]{5}"
+              required
+            />
+          </div>
+          <br />
+          <div class="form-div">
+            <label for="gender">Gender:</label>
+            <select name="gender" id="gender">
+              <option>Select</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <br />
+          <div class="form-div">
+            <label for="country">Country:</label>
+            <input
+              placeholder="Enter Your Country"
+              list="country-data"
+              name="country"
+              id="country"
+            />
+            <datalist id="country-data">
+              <option value="India"></option>
+              <option value="USA"></option>
+              <option value="Japan"></option>
+              <option value="Russia"></option>
+              <option value="Europe"></option>
+            </datalist>
+          </div>
+          <br />
+          <div class="form-div">
+            <label for="course">Course:</label>
+            <input type="checkbox" value="Node" name="course" id="course" />
+            <h4>Node</h4>
+            <input type="checkbox" value="Angular" name="course" id="course" />
+            <h4>Angular</h4>
+            <input type="checkbox" value="React Js" name="course" id="course" />
+            <h4>React Js</h4>
+          </div>
+          <div class="submit-btn">
+            <button type="submit">submit</button>
+            <button type="reset">Reset</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
