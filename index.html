@@ -5,6 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Crud Operation</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="/assets/js/index.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <section id="createProduct" onsubmit="submitForm(event)">
+      <h1>Create Product</h1>
+      <form id="createForm">
+        <div class="infoFields">
+          <label for="productName">Name:</label>
+          <input type="text" id="productName" required />
+        </div>
+        <div class="infoFields">
+          <label for="productImage">Image Url:</label>
+          <input type="text" id="productImage" required />
+        </div>
+        <div class="infoFields">
+          <label for="productPrice">Price:</label>
+          <input type="number" id="productPrice" required />
+        </div>
+        <div class="infoFields">
+          <label for="productDescription">Description:</label>
+          <input type="text" id="productDescription" required />
+        </div>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      </form>
+    </section>
+    <section id="displayProduct">
+      <table>
+        <thead>
+          <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Product Image</th>
+            <th>Product Price</th>
+            <th>Product Description</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </body>
 </html>

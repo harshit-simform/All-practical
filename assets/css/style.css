@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+section {
+  margin: 0px 50px;
+}
+#createProduct {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.infoFields {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  margin-top: 10px;
+}
+#createForm button {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+/* #displayProduct {
+  height: 100vh;
+} */
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+table td {
+  border: 1px solid black;
+  text-align: center;
+  font-size: 18px;
+  padding: 5px;
+}
+table th {
+  border: 1px solid black;
+  text-align: center;
+  padding: 10px;
+}
+.fa-solid {
+  font-size: 18px;
+  margin: 0px 5px;
+}
+.fa-trash {
+  color: #d4403a;
+}
