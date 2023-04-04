@@ -31,14 +31,11 @@ toggleTabs.addEventListener("click", (e) => {
   const removeClass = toggleTabs.children;
   const targetElement = e.target;
   console.log(targetElement.children.length);
-  // console();
   if (e.target.children.length === 0) {
-    // console.log(e.target.innerText);
     for (let element of removeClass) {
       element.classList.remove("active-link");
     }
     tabcontent.forEach((element) => {
-      // console.log(element);
       element.classList.remove("active-tab");
     });
     document
