@@ -27,11 +27,8 @@ const factorial = (n) => (!(n > 1) ? 1 : factorial(n - 1) * n);
 function findNumber() {
   let i = data.screen.length;
   const tempArr = [];
-  console.log(data.screen[i]);
   if (data.screen[i - 1] == ")") {
-    console.log(data.screen[i]);
     while (i >= 0 && data.screen[i] !== "(") {
-      console.log(data.screen[i]);
       tempArr.unshift(data.screen[i]);
       data.operation.pop();
       i--;
@@ -45,7 +42,6 @@ function findNumber() {
       i--;
     }
   }
-  console.log(tempArr.join(""));
   return eval(tempArr.join(""));
 }
 
@@ -311,8 +307,6 @@ function handleEvents(btn) {
   }
   data.operation.push(operation);
   data.screen.push(btnText);
-  console.log(data.screen);
-  console.log(data.operation);
   screen.value = data.screen.join("");
 }
 
@@ -323,11 +317,14 @@ function finalAnswer(event) {
     return;
   }
   try {
-    console.log(data.operation.join(""));
     let value = eval(data.operation.join(""));
     data.operation = [value];
     data.screen = [value];
-    screen.value = value;
+    if (isNaN(value)) {
+      screen.value = "Enter a valid number";
+    } else {
+      screen.value = value;
+    }
     return;
   } catch {
     emptyarray();
@@ -367,6 +364,9 @@ function toggle(value) {
           (key) => trigoObject[key][1] === btnText
         );
       }
+      if (btnTextReplacement === undefined) {
+        return;
+      }
       btn.innerHTML = btnTextReplacement;
     });
     toggleFlag.inverseFunction = !toggleFlag.inverseFunction;
@@ -383,6 +383,9 @@ function toggle(value) {
         btnTextReplacement = Object.keys(trigoObject).find(
           (key) => trigoObject[key][2] === btnText
         );
+      }
+      if (btnTextReplacement === undefined) {
+        return;
       }
       btn.innerHTML = btnTextReplacement;
     });
@@ -427,8 +430,6 @@ function backFunction() {
       ? data.screen.pop()
       : data.operation.pop();
   }
-  console.log(data.screen, "back");
-  console.log(data.operation, "back");
   screen.value = data.screen.join("");
 }
 
@@ -453,6 +454,10 @@ function trigonometryValue(operation, value) {
 function inverseTrigoFunction(operation, value) {
   if (operation == "Math.asec") {
     value = 1 / Math.acos(value);
+  } else if (operation == "Math.acot") {
+    value = 1 / Math.atan(value);
+  } else if (operation == "Math.acosec") {
+    value = 1 / Math.asin(value);
   } else {
     value = operation(value);
   }
