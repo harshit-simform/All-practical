@@ -660,5 +660,6 @@ form .submit-btn {
   }
   .work-list {
     grid-auto-rows: 40%;
+    margin-bottom: 15%;
   }
 }
