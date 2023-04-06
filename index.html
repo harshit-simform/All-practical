@@ -40,13 +40,25 @@
       </form>
     </section>
     <section id="displayProduct">
+      <div id="search-filter">
+        <div>
+          <label for="searchProduct">Filter By Id:</label>
+          <select id="filterById">
+            <option value="all" selected>All</option>
+          </select>
+        </div>
+        <div>
+          <label for="searchProduct">Search Product:</label>
+          <input type="text" id="searchProduct" />
+        </div>
+      </div>
       <table>
         <thead>
           <tr>
-            <th>Product ID</th>
-            <th>Product Name</th>
+            <th onclick="sortById()">Product ID</th>
+            <th onclick="sortByName()">Product Name</th>
             <th>Product Image</th>
-            <th>Product Price</th>
+            <th onclick="sortByPrice()">Product Price</th>
             <th>Product Description</th>
             <th>Action</th>
           </tr>

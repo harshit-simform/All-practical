@@ -36,6 +36,10 @@ table {
   border-collapse: collapse;
 }
 table td {
+  /* width: fit-content; */
+  object-fit: contain;
+  width: 5%;
+  /* height: %; */
   border: 1px solid black;
   text-align: center;
   font-size: 18px;
@@ -47,9 +51,36 @@ table th {
   padding: 10px;
 }
 .fa-solid {
-  font-size: 18px;
+  font-size: 16px;
   margin: 0px 5px;
+  cursor: pointer;
 }
 .fa-trash {
   color: #d4403a;
+}
+.fa-pen-to-square {
+  color: #14a44d;
+}
+.fa-eye {
+  color: #0275d8;
+}
+table td img {
+  object-fit: contain;
+  width: 60%;
+  padding: 0;
+  /* height: 10%; */
+}
+#displayProduct {
+  display: none;
+  width: 65%;
+  /* height: 50%; */
+}
+#search-filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+tbody h2 {
+  text-align: center;
 }
