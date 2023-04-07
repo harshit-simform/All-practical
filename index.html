@@ -16,55 +16,71 @@
     <script src="/assets/js/index.js" defer></script>
   </head>
   <body>
-    <section id="createProduct" onsubmit="submitForm(event)">
-      <h1>Create Product</h1>
-      <form id="createForm">
-        <div class="infoFields">
-          <label for="productName">Name:</label>
-          <input type="text" id="productName" required />
+    <div class="container">
+      <section id="createProduct" onsubmit="submitForm(event)">
+        <h1>Create Product</h1>
+        <form id="createForm">
+          <div class="infoFields">
+            <label for="productName">Name:</label>
+            <input type="text" id="productName" required />
+          </div>
+          <div class="infoFields">
+            <label for="productImage">Image Url:</label>
+            <input type="text" id="productImage" required />
+          </div>
+          <div class="infoFields">
+            <label for="productPrice">Price:</label>
+            <input type="number" id="productPrice" required />
+          </div>
+          <div class="infoFields">
+            <label for="productDescription">Description:</label>
+            <input type="text" id="productDescription" required />
+          </div>
+          <button type="submit" id="submitButton">Submit</button>
+          <button type="reset" id="resetButton">Reset</button>
+        </form>
+      </section>
+      <section id="displayProduct">
+        <div id="search-filter">
+          <div>
+            <label for="searchProduct">Filter By Id:</label>
+            <select id="filterById">
+              <option value="all" selected>All</option>
+            </select>
+          </div>
+          <div>
+            <label for="searchProduct">Search Product:</label>
+            <input type="text" id="searchProduct" />
+          </div>
         </div>
-        <div class="infoFields">
-          <label for="productImage">Image Url:</label>
-          <input type="text" id="productImage" required />
+        <div class="displayTable">
+          <table>
+            <thead>
+              <tr>
+                <th onclick="sortById()">
+                  Product ID<i id="arrow-id" class="fa-solid fa-angle-down"></i>
+                </th>
+                <th onclick="sortByName()">
+                  Product Name<i
+                    id="arrow-name"
+                    class="fa-solid fa-angle-down"
+                  ></i>
+                </th>
+                <th>Product Image</th>
+                <th onclick="sortByPrice()">
+                  Product Price<i
+                    id="arrow-price"
+                    class="fa-solid fa-angle-down"
+                  ></i>
+                </th>
+                <th>Product Description</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
         </div>
-        <div class="infoFields">
-          <label for="productPrice">Price:</label>
-          <input type="number" id="productPrice" required />
-        </div>
-        <div class="infoFields">
-          <label for="productDescription">Description:</label>
-          <input type="text" id="productDescription" required />
-        </div>
-        <button type="submit">Submit</button>
-        <button type="reset">Reset</button>
-      </form>
-    </section>
-    <section id="displayProduct">
-      <div id="search-filter">
-        <div>
-          <label for="searchProduct">Filter By Id:</label>
-          <select id="filterById">
-            <option value="all" selected>All</option>
-          </select>
-        </div>
-        <div>
-          <label for="searchProduct">Search Product:</label>
-          <input type="text" id="searchProduct" />
-        </div>
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th onclick="sortById()">Product ID</th>
-            <th onclick="sortByName()">Product Name</th>
-            <th>Product Image</th>
-            <th onclick="sortByPrice()">Product Price</th>
-            <th>Product Description</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </section>
+      </section>
+    </div>
   </body>
 </html>

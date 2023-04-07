@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Product</title>
+    <title>view Product</title>
     <link rel="stylesheet" href="/assets/css/view.css">
     <script src="/assets/js/view.js" defer></script>
 </head>
 <body>
     <form id="viewForm">
+      <h1>View Product</h1>
         <div class="infoFields">
         <label for="id">ID:</label>
         <input type="text" id="id" name="id" disabled>
@@ -30,7 +31,7 @@
           <label for="productDescription">Description:</label>
           <input type="text" id="productDescription" disabled />
         </div>
-        <button class="backButton"><a href="/index.html">Back</a></button>
+        <button onclick="backFunc(event)" class="backButton">Back</button>
       </form>
       
 </html>
