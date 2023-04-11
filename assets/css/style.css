@@ -105,7 +105,7 @@ table {
 }
 .displayTable {
   max-height: 50vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   border: 2px solid white;
   border-radius: 10px;
 }
