@@ -67,3 +67,6 @@ body {
   font-weight: 600;
   text-indent: 10px;
 }
+#viewForm img {
+  height: 25vh;
+}
