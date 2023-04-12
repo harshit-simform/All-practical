@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Alice",
+    "age": 25,
+    "address": {
+      "street": "Connaught Place",
+      "state": "Delhi",
+      "country": "India"
+    },
+    "hobbies": ["reading", "hiking", "traveling"]
+  },
+  {
+    "name": "Bob",
+    "age": 32,
+    "address": {
+      "street": "Marine Drive",
+      "state": "Maharashtra",
+      "country": "India"
+    },
+    "hobbies": ["golf", "cooking", "photography"]
+  },
+  {
+    "name": "Charlie",
+    "age": 19,
+    "address": {
+      "street": "MG Road",
+      "state": "Karnataka",
+      "country": "India"
+    },
+    "hobbies": ["music", "swimming", "volunteering"]
+  },
+  {
+    "name": "David",
+    "age": 40,
+    "address": {
+      "street": "Connaught Place",
+      "state": "Delhi",
+      "country": "India"
+    },
+    "hobbies": ["running", "reading", "painting"]
+  },
+  {
+    "name": "Emma",
+    "age": 27,
+    "address": {
+      "street": "Marine Drive",
+      "state": "Maharashtra",
+      "country": "India"
+    },
+    "hobbies": ["yoga", "dancing", "cooking"]
+  },
+  {
+    "name": "Frank",
+    "age": 36,
+    "address": {
+      "street": "Connaught Place",
+      "state": "Delhi",
+      "country": "India"
+    },
+    "hobbies": ["gardening", "fishing", "woodworking"]
+  },
+  {
+    "name": "Grace",
+    "age": 22,
+    "address": {
+      "street": "Marine Drive",
+      "state": "Maharashtra",
+      "country": "India"
+    },
+    "hobbies": ["reading", "painting", "hiking"]
+  },
+  {
+    "name": "Henry",
+    "age": 29,
+    "address": {
+      "street": "MG Road",
+      "state": "Karnataka",
+      "country": "India"
+    },
+    "hobbies": ["photography", "hiking", "traveling"]
+  },
+  {
+    "name": "Isabella",
+    "age": 31,
+    "address": {
+      "street": "Connaught Place",
+      "state": "Delhi",
+      "country": "India"
+    },
+    "hobbies": ["reading", "cooking", "yoga"]
+  },
+  {
+    "name": "Jack",
+    "age": 24,
+    "address": {
+      "street": "MG Road",
+      "state": "Karnataka",
+      "country": "India"
+    },
+    "hobbies": ["music", "running", "swimming"]
+  }
+]

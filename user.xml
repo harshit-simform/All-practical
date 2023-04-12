@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+   <element>
+      <address>
+         <country>India</country>
+         <state>Delhi</state>
+         <street>Connaught Place</street>
+      </address>
+      <age>25</age>
+      <hobbies>
+         <element>reading</element>
+         <element>hiking</element>
+         <element>traveling</element>
+      </hobbies>
+      <name>Alice</name>
+   </element>
+   <element>
+      <address>
+         <country>India</country>
+         <state>Maharashtra</state>
+         <street>Marine Drive</street>
+      </address>
+      <age>32</age>
+      <hobbies>
+         <element>golf</element>
+         <element>cooking</element>
+         <element>photography</element>
+      </hobbies>
+      <name>Bob</name>
+   </element>
+   <element>
+      <address>
+         <country>India</country>
+         <state>Karnataka</state>
+         <street>MG Road</street>
+      </address>
+      <age>19</age>
+      <hobbies>
+         <element>music</element>
+         <element>swimming</element>
+         <element>volunteering</element>
+      </hobbies>
+      <name>Charlie</name>
+   </element>
+   <element>
+      <address>
+         <country>India</country>
+         <state>Delhi</state>
+         <street>Connaught Place</street>
+      </address>
+      <age>40</age>
+      <hobbies>
+         <element>running</element>
+         <element>reading</element>
+         <element>painting</element>
+      </hobbies>
+      <name>David</name>
+   </element>
+   <element>
+      <address>
+         <country>India</country>
+         <state>Maharashtra</state>
+         <street>Marine Drive</street>
+      </address>
+      <age>27</age>
+      <hobbies>
+         <element>yoga</element>
+         <element>dancing</element>
+         <element>cooking</element>
+      </hobbies>
+      <name>Emma</name>
+   </element>
+   <element>
+      <address>
+         <country>India</country>
+         <state>Delhi</state>
+         <street>Connaught Place</street>
+      </address>
+      <age>36</age>
+      <hobbies>
+         <element>gardening</element>
+         <element>fishing</element>
+         <element>woodworking</element>
+      </hobbies>
+      <name>Frank</name>
+   </element>
+   <element>
+      <address>
+         <country>India</country>
+         <state>Maharashtra</state>
+         <street>Marine Drive</street>
+      </address>
+      <age>22</age>
+      <hobbies>
+         <element>reading</element>
+         <element>painting</element>
+         <element>hiking</element>
+      </hobbies>
+      <name>Grace</name>
+   </element>
+   <element>
+      <address>
+         <country>India</country>
+         <state>Karnataka</state>
+         <street>MG Road</street>
+      </address>
+      <age>29</age>
+      <hobbies>
+         <element>photography</element>
+         <element>hiking</element>
+         <element>traveling</element>
+      </hobbies>
+      <name>Henry</name>
+   </element>
+   <element>
+      <address>
+         <country>India</country>
+         <state>Delhi</state>
+         <street>Connaught Place</street>
+      </address>
+      <age>31</age>
+      <hobbies>
+         <element>reading</element>
+         <element>cooking</element>
+         <element>yoga</element>
+      </hobbies>
+      <name>Isabella</name>
+   </element>
+   <element>
+      <address>
+         <country>India</country>
+         <state>Karnataka</state>
+         <street>MG Road</street>
+      </address>
+      <age>24</age>
+      <hobbies>
+         <element>music</element>
+         <element>running</element>
+         <element>swimming</element>
+      </hobbies>
+      <name>Jack</name>
+   </element>
+</root>
