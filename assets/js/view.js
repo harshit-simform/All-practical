@@ -1,6 +1,5 @@
 const id = this.sessionStorage.getItem("viewProductId");
 onload = function () {
-  // console.log(document.getElementById("productPrice"));
   if (id) {
     const data = JSON.parse(localStorage.getItem(id));
     document.getElementById("viewForm").reset();
