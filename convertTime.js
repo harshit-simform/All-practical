@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 const data = require("./timeZoneName.json");
-// console.log(data);
+
 const timeZone = [
   "Coordinated Universal Time (UTC)",
   "Greenwich Mean Time (GMT)",
@@ -55,57 +55,16 @@ inquirer
     },
   ])
   .then((answers) => {
-    // console.log(answers);
-    // const currentTime = new Date(`05/16/2023 ${answers.current_time}`);
-    // const currentTimeZone = data[answers.current_time_zone];
-    // const convertTimeZone = data[answers.convert_time_zone];
-    // console.log(currentTimeZone, convertTimeZone);
-    // const originalTime = currentTime.toLocaleTimeString("en-US", {
-    //   timeZone: `${currentTimeZone}`,
-    // });
-    // const convertedTime = currentTime.toLocaleTimeString("en-US", {
-    //   timeZone: `${convertTimeZone}`,
-    // });
-    // console.log(`Original Time: ${originalTime}`);
-    // console.log(`Converted Time: ${convertedTime}`);
     const currentTime = new Date(`05/16/2023 ${answers.current_time}`);
     const currentTimeZone = data[answers.current_time_zone];
     const convertTimeZone = data[answers.convert_time_zone];
     console.log(currentTimeZone, convertTimeZone);
-
     const originalTime = currentTime.toLocaleTimeString("en-US", {
-      timeZone: currentTimeZone,
+      timeZone: `${currentTimeZone}`,
     });
-    let convertedTime;
-
-    // Check if DST is in effect for the convertTimeZone
-    if (convertTimeZone.includes("Summer")) {
-      const dstStart = new Date().getFullYear() + "-03-25";
-      const dstEnd = new Date().getFullYear() + "-10-30";
-      const currentDate = currentTime.toISOString().split("T")[0];
-
-      if (currentDate >= dstStart && currentDate <= dstEnd) {
-        // DST is in effect, adjust the time difference by 1 hour
-        convertedTime = currentTime.toLocaleTimeString("en-US", {
-          timeZone: convertTimeZone,
-          hour12: false,
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-        });
-      } else {
-        // DST is not in effect
-        convertedTime = currentTime.toLocaleTimeString("en-US", {
-          timeZone: convertTimeZone,
-        });
-      }
-    } else {
-      // DST is not applicable for the convertTimeZone
-      convertedTime = currentTime.toLocaleTimeString("en-US", {
-        timeZone: convertTimeZone,
-      });
-    }
-
+    const convertedTime = currentTime.toLocaleTimeString("en-US", {
+      timeZone: `${convertTimeZone}`,
+    });
     console.log(`Original Time: ${originalTime}`);
     console.log(`Converted Time: ${convertedTime}`);
   });
