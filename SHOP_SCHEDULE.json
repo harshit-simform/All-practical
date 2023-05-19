@@ -12,11 +12,11 @@
   {
     "day": "Thu",
     "open": "07:00 AM",
-    "close": "05:00 PM"
+    "close": "07:00 PM"
   },
   {
     "day": "Fri",
-    "open": "05:00 AM",
-    "close": "07:00 PM"
+    "open": "07:00 AM",
+    "close": "10:00 AM"
   }
 ]

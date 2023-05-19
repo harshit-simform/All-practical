@@ -1,6 +1,7 @@
 const inquirer = require("inquirer");
 const shop_schedule = require("./SHOP_SCHEDULE.json");
-const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const weekDay = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
 inquirer
   .prompt([
     {
@@ -9,7 +10,7 @@ inquirer
       message: "Enter time and day check shop is open or not!",
       default() {
         const date = new Date();
-        const day = days[date.getDay()];
+        const day = weekDay[date.getDay()];
         const time = date.toLocaleString("en-US", {
           hour: "numeric",
           minute: "numeric",
@@ -21,25 +22,19 @@ inquirer
   ])
   .then((answers) => {
     const timeDay = answers.time_day.split(" ");
-    const day = timeDay[0];
-    const time = timeDay[1];
-    const meridian = timeDay[2];
-
+    const [day, time, meridian] = timeDay;
     const foundDay = shop_schedule.find((element) => element.day === day);
-    const index = shop_schedule.findIndex((element) => element.day === day);
-    console.log(index);
+
+    const currentTime = new Date(
+      `01/02/2000 ${new Date().toLocaleTimeString()}`
+    ).getTime();
 
     if (!foundDay) {
-      console.log("closed");
+      printNextOpenDay(foundDay, currentTime);
+      return;
     } else {
       const shopOpenTime = new Date(`01/02/2000 ${foundDay.open}`).getTime();
       const shopCloseTime = new Date(`01/02/2000 ${foundDay.close}`).getTime();
-      const currentTime = new Date(
-        `01/02/2000 ${new Date().toLocaleTimeString()}`
-      ).getTime();
-
-      console.log();
-
       if (currentTime >= shopOpenTime && currentTime <= shopCloseTime) {
         const timeRemainForClose = new Date(shopCloseTime - currentTime);
         console.log(
@@ -51,20 +46,53 @@ inquirer
         console.log(
           `Shop is closed will open after ${timeRemainForOpen.getUTCHours()}hr : ${timeRemainForOpen.getUTCMinutes()}min`
         );
+        return;
       } else {
-        const nextDayIndex = index + 1;
-        console.log();
-        const shopOpenTime = new Date(
-          `01/02/2000 ${shop_schedule[nextDayIndex].open}`
-        ).getTime();
-        const timeRemainForOpen = new Date(shopOpenTime - currentTime);
-
-        console.log(
-          timeRemainForOpen.getUTCHours(),
-          timeRemainForOpen.getUTCMinutes()
-        );
+        printNextOpenDay(foundDay, currentTime);
+        return;
       }
     }
   });
 
-function findNextOpenDay() {}
+function findNextDayDetails(foundDay) {
+  let totalHourClosed = 0;
+  const currentDayIndex = foundDay
+    ? new Date().getDay() + 1
+    : new Date().getDay();
+  console.log(currentDayIndex);
+  if (
+    shop_schedule.find(
+      (element) => element.day === weekDay[currentDayIndex + 1]
+    )
+  ) {
+    const index = shop_schedule.findIndex(
+      (element) => element.day === weekDay[currentDayIndex + 1]
+    );
+    return { index, totalHourClosed };
+  }
+  for (let i = currentDayIndex; i < weekDay.length; i++) {
+    totalHourClosed += 24;
+    if (shop_schedule.find((element) => element.day === weekDay[i])) {
+      totalHourClosed = totalHourClosed === 24 ? 0 : totalHourClosed;
+      const nextOpenDay = weekDay[i];
+      const index = shop_schedule.findIndex(
+        (element) => element.day === nextOpenDay
+      );
+      return { index, totalHourClosed };
+    }
+    i = i === weekDay.length - 1 ? 0 : i;
+  }
+}
+
+function printNextOpenDay(foundDay, currentTime) {
+  const detailsOfNextDay = findNextDayDetails(foundDay);
+  const nextOpenDay = new Date(
+    `01/02/2000 ${shop_schedule[detailsOfNextDay.index].open}`
+  ).getTime();
+  const timeRemainForOpen = new Date(nextOpenDay - currentTime);
+  console.log(
+    `Shop is closed will open after ${
+      timeRemainForOpen.getUTCHours() + detailsOfNextDay.totalHourClosed
+    }hr : ${timeRemainForOpen.getUTCMinutes()}min`
+  );
+}
