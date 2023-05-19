@@ -21,8 +21,7 @@ inquirer
     },
   ])
   .then((answers) => {
-    const timeDay = answers.time_day.split(" ");
-    const [day, time, meridian] = timeDay;
+    const day = answers.time_day.split(" ")[0];
     const foundDay = shop_schedule.find((element) => element.day === day);
 
     const currentTime = new Date(
@@ -54,12 +53,12 @@ inquirer
     }
   });
 
+// function for finding next day details
 function findNextDayDetails(foundDay) {
   let totalDaysClosed = 0;
   const currentDayIndex = foundDay
     ? new Date().getDay() + 1
     : new Date().getDay();
-  console.log(currentDayIndex);
   if (
     shop_schedule.find(
       (element) => element.day === weekDay[currentDayIndex + 1]
@@ -84,6 +83,7 @@ function findNextDayDetails(foundDay) {
   }
 }
 
+// function for printing when will shop open in days format
 function printNextOpenDay(foundDay, currentTime) {
   const detailsOfNextDay = findNextDayDetails(foundDay);
   const nextOpenDay = new Date(
