@@ -55,7 +55,7 @@ inquirer
   });
 
 function findNextDayDetails(foundDay) {
-  let totalHourClosed = 0;
+  let totalDaysClosed = 0;
   const currentDayIndex = foundDay
     ? new Date().getDay() + 1
     : new Date().getDay();
@@ -68,17 +68,17 @@ function findNextDayDetails(foundDay) {
     const index = shop_schedule.findIndex(
       (element) => element.day === weekDay[currentDayIndex + 1]
     );
-    return { index, totalHourClosed };
+    return { index, totalDaysClosed };
   }
   for (let i = currentDayIndex; i < weekDay.length; i++) {
-    totalHourClosed += 24;
+    totalDaysClosed += 1;
     if (shop_schedule.find((element) => element.day === weekDay[i])) {
-      totalHourClosed = totalHourClosed === 24 ? 0 : totalHourClosed;
+      totalDaysClosed = totalDaysClosed === 1 ? 0 : totalDaysClosed;
       const nextOpenDay = weekDay[i];
       const index = shop_schedule.findIndex(
         (element) => element.day === nextOpenDay
       );
-      return { index, totalHourClosed };
+      return { index, totalDaysClosed };
     }
     i = i === weekDay.length - 1 ? 0 : i;
   }
@@ -92,7 +92,7 @@ function printNextOpenDay(foundDay, currentTime) {
   const timeRemainForOpen = new Date(nextOpenDay - currentTime);
   console.log(
     `Shop is closed will open after ${
-      timeRemainForOpen.getUTCHours() + detailsOfNextDay.totalHourClosed
-    }hr : ${timeRemainForOpen.getUTCMinutes()}min`
+      detailsOfNextDay.totalDaysClosed
+    } days ${timeRemainForOpen.getUTCHours()}hr`
   );
 }
