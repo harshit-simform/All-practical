@@ -1,4 +1,4 @@
-const inquirer = require("inquirer");
+const inquirer = require("inquirer"); // package for prompting question's to the terminal
 const shop_schedule = require("./SHOP_SCHEDULE.json");
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 inquirer
@@ -20,12 +20,9 @@ inquirer
     },
   ])
   .then((answers) => {
-    const timeDay = answers.time_day.split(" ");
-    const day = timeDay[0];
-    const time = timeDay[1];
-    const meridian = timeDay[2];
+    const day = answers.time_day.split(" ")[0]; // current day
 
-    const foundDay = shop_schedule.find((element) => element.day === day);
+    const foundDay = shop_schedule.find((element) => element.day === day); // check if current day is present in shop_schedule or not
 
     if (!foundDay) {
       console.log("closed");
