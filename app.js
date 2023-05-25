@@ -1,4 +1,4 @@
-const inquirer = require("inquirer");
+const inquirer = require("inquirer"); // package for prompting it to the terminal
 const shop_schedule = require("./SHOP_SCHEDULE.json");
 const weekDay = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -21,8 +21,7 @@ inquirer
     },
   ])
   .then((answers) => {
-    const timeDay = answers.time_day.split(" ");
-    const [day, time, meridian] = timeDay;
+    const day = answers.time_day.split(" ")[0];
     const foundDay = shop_schedule.find((element) => element.day === day);
 
     const currentTime = new Date(
@@ -54,12 +53,12 @@ inquirer
     }
   });
 
+// function for finding next day details
 function findNextDayDetails(foundDay) {
   let totalHourClosed = 0;
   const currentDayIndex = foundDay
     ? new Date().getDay() + 1
     : new Date().getDay();
-  console.log(currentDayIndex);
   if (
     shop_schedule.find(
       (element) => element.day === weekDay[currentDayIndex + 1]
@@ -84,6 +83,7 @@ function findNextDayDetails(foundDay) {
   }
 }
 
+// function for finding next day on which shop is opening
 function printNextOpenDay(foundDay, currentTime) {
   const detailsOfNextDay = findNextDayDetails(foundDay);
   const nextOpenDay = new Date(
