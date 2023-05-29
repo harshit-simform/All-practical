@@ -1,16 +1,14 @@
 const express = require('express');
-const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
+const { I18n } = require('i18n');
+const cookieParser = require('cookie-parser');
+const path = require('path');
 const {
   login,
   register,
   logout,
   isAuthenticated,
 } = require('./userController');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const { I18n } = require('i18n');
-const { response } = require('express');
 
 const i18n = new I18n({
   locales: ['en', 'hi'],
@@ -19,12 +17,14 @@ const i18n = new I18n({
 });
 
 const app = express();
+// using various built-in middleware for parsing cookie serving static files and a bodyParser for parsing data into req.body
 app.use(i18n.init);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(express.json());
 app.set('view engine', 'ejs');
 
+// routes for client side
 app.get('/', (req, res) => {
   res.render('login');
 });
@@ -39,9 +39,16 @@ app.get('/welcome', isAuthenticated, async (req, res) => {
   });
 });
 
+// routes for api(backend)
 app.post('/api/login', login);
 app.post('/api/register', register);
-console.log('clear all');
 app.get('/api/logout', logout);
+
+// for all routes that has not been defined
+app.all('*', (req, res) => {
+  res.render('error', {
+    message: 'This route is not defined yet!!!',
+  });
+});
 
 module.exports = app;

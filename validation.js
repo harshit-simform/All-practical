@@ -16,6 +16,7 @@ const schema = Joi.object({
     .error(new Error('Confirm password must match the password!')),
 });
 
+// function for validating incoming data
 function validateData(data) {
   const validationResult = schema.validate(data);
   if (validationResult.error) {

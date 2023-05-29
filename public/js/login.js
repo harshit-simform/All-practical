@@ -1,8 +1,8 @@
 /*eslint-disable */
 
 const loginForm = document.getElementById('login-form');
-console.log(loginForm);
 
+// function for login from client side
 loginForm.addEventListener('submit', async (e) => {
   try {
     e.preventDefault();
@@ -25,7 +25,7 @@ loginForm.addEventListener('submit', async (e) => {
   } catch (error) {
     console.error(error);
     alert(
-      `errorCode: ${error.response.status} \n message: ${error.response.data.message}`
+      ` errorCode: ${error.response.status}\n message: ${error.response.data.message}`
     );
   }
 });

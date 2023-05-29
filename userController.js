@@ -1,9 +1,10 @@
-const User = require('./userModel');
-const validateData = require('./validation');
+const { promisify } = require('util');
 const bycrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { promisify } = require('util');
+const User = require('./userModel');
+const validateData = require('./validation');
 
+// api endpoint for login
 exports.login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
@@ -40,6 +41,7 @@ exports.login = async (req, res, next) => {
   }
 };
 
+// api endpoint for register
 exports.register = async (req, res, next) => {
   try {
     // for validating incomming data
@@ -67,11 +69,13 @@ exports.register = async (req, res, next) => {
   }
 };
 
+// api endpoint for logout
 exports.logout = (req, res) => {
   res.clearCookie('jwt');
   res.status(200).json({ status: 'success' });
 };
 
+// api endpoint for checking if user is logged in or not
 exports.isAuthenticated = async (req, res, next) => {
   try {
     if (req.cookies.jwt) {

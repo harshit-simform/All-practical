@@ -1,9 +1,8 @@
 /*eslint-disable */
-// import axios from 'axios';
 
 const registerForm = document.getElementById('register-form');
-console.log(registerForm);
 
+// function for register from client side
 registerForm.addEventListener('submit', async (e) => {
   try {
     e.preventDefault();
@@ -25,9 +24,8 @@ registerForm.addEventListener('submit', async (e) => {
     alert('Register successful! Please Login...');
     location.assign('/');
   } catch (error) {
-    console.log(error);
     alert(
-      `errorCode: ${error.response.status} \n message: ${error.response.data.message}`
+      `errorCode: ${error.response.status}\nmessage: ${error.response.data.message}`
     );
   }
 });

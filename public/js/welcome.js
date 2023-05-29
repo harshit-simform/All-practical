@@ -2,6 +2,7 @@
 
 const logoutForm = document.getElementById('logout-form');
 
+// function for logout from client side
 logoutForm.addEventListener('submit', async (e) => {
   try {
     e.preventDefault();
@@ -9,12 +10,10 @@ logoutForm.addEventListener('submit', async (e) => {
       method: 'GET',
       url: 'http://localhost:8000/api/logout',
     });
-    console.log(result);
     alert('logout successful!');
     location.reload(true);
     location.assign('/');
   } catch (error) {
-    console.error(error);
     alert(
       `errorCode: ${error.response.status} \n message: ${error.response.data.message}`
     );
