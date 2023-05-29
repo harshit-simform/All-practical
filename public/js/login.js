@@ -4,25 +4,28 @@ const loginForm = document.getElementById('login-form');
 console.log(loginForm);
 
 loginForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
+  try {
+    e.preventDefault();
 
-  let dataObj = {};
+    let dataObj = {};
 
-  const formField = document.querySelectorAll('.data-field');
+    const formField = document.querySelectorAll('.data-field');
 
-  formField.forEach((field) => {
-    dataObj[field.name] = field.value;
-  });
+    formField.forEach((field) => {
+      dataObj[field.name] = field.value;
+    });
 
-  const result = await fetch('http://localhost:8000/api/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(dataObj),
-  });
-  if (result.ok) {
-    alert('Login successful');
+    const result = await axios({
+      method: 'POST',
+      url: 'http://localhost:8000/api/login',
+      data: dataObj,
+    });
+    alert('Login successful!');
     location.assign('/welcome');
+  } catch (error) {
+    console.error(error);
+    alert(
+      `errorCode: ${error.response.status} \n message: ${error.response.data.message}`
+    );
   }
 });

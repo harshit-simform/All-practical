@@ -2,6 +2,7 @@ const User = require('./userModel');
 const validateData = require('./validation');
 const bycrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { promisify } = require('util');
 
 exports.login = async (req, res, next) => {
   try {
@@ -42,7 +43,6 @@ exports.login = async (req, res, next) => {
 exports.register = async (req, res, next) => {
   try {
     // for validating incomming data
-    console.log('in register');
     const [result, errorMessage] = validateData(req.body);
     if (!result) throw new Error(errorMessage);
 
@@ -62,6 +62,28 @@ exports.register = async (req, res, next) => {
   } catch (error) {
     res.status(400).json({
       status: 'error',
+      message: error.message,
+    });
+  }
+};
+
+exports.logout = (req, res) => {
+  res.clearCookie('jwt');
+  res.status(200).json({ status: 'success' });
+};
+
+exports.isAuthenticated = async (req, res, next) => {
+  try {
+    if (req.cookies.jwt) {
+      await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
+    } else {
+      throw Object.assign(new Error(' You are not Logged in...'), {
+        statusCode: 401,
+      });
+    }
+    next();
+  } catch (error) {
+    res.status(error.statusCode).render('error', {
       message: error.message,
     });
   }
