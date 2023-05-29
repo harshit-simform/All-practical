@@ -56,15 +56,17 @@ inquirer
   ])
   .then((answers) => {
     const currentTime = new Date(`05/16/2023 ${answers.current_time}`);
-    const currentTimeZone = data[answers.current_time_zone];
-    const convertTimeZone = data[answers.convert_time_zone];
-    console.log(currentTimeZone, convertTimeZone);
+    const currentTimeZone = data[answers.current_time_zone]; // getting current time
+    const convertTimeZone = data[answers.convert_time_zone]; // getting time zone to which current time has to be converted
+
     const originalTime = currentTime.toLocaleTimeString("en-US", {
       timeZone: `${currentTimeZone}`,
     });
+
     const convertedTime = currentTime.toLocaleTimeString("en-US", {
       timeZone: `${convertTimeZone}`,
     });
+
     console.log(`Original Time: ${originalTime}`);
     console.log(`Converted Time: ${convertedTime}`);
   });
