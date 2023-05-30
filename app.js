@@ -5,17 +5,30 @@ const File = require("./fileModel");
 const sharp = require("sharp");
 
 const app = express();
+
 const upload = multer({
   storage: multer.memoryStorage(),
 });
 
-app.set("view engine", "ejs");
-app.use(express.static(path.join(__dirname, "public")));
+app.set("view engine", "ejs"); // for setting view engine
 
+app.use(express.static(path.join(__dirname, "public"))); // for serving static files
+
+// api route for displaying default upload page
 app.get("/", (req, res) => {
   res.status(200).render("uploadFile");
 });
 
+// api route for getting all uploaded files from database and showing them in browser
+app.get("/files", async (req, res) => {
+  const files = await File.find();
+  if (!files) throw new Error(`File not found`);
+  res.status(200).render("files", {
+    files,
+  });
+});
+
+// api route for backend for uploading/resizing and save image in database and in local
 app.post("/fileUpload", upload.single("photo"), async (req, res) => {
   try {
     req.file.filename = `file-${Date.now()}.jpeg`;
@@ -32,14 +45,6 @@ app.post("/fileUpload", upload.single("photo"), async (req, res) => {
   } catch (err) {
     console.log("error", err.message);
   }
-});
-
-app.get("/files", async (req, res) => {
-  const files = await File.find();
-  if (!files) throw new Error(`File not found`);
-  res.status(200).render("files", {
-    files,
-  });
 });
 
 module.exports = app;
