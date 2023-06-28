@@ -14,6 +14,7 @@ const {
   mostExpensiveOrder,
   mostPurchasedProduct,
   inactiveUser,
+  userData,
 } = require("./queries");
 
 app.use(express.json());
@@ -39,6 +40,7 @@ app.use("/products", productRouter);
 app.use("/orders", orderRouter);
 app.use("/order_details", orderDetailRouter);
 
+app.get("/user-data", userData());
 app.get("/undeliver-orders", undeliverOrders());
 app.get("/most-recent-orders", mostRecentOrders());
 app.get("/top-active-user", topActiveUser());
