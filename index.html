@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scientific Calculator</title>
   <link rel="stylesheet" href="style.css" />
-  <script defer src="/build/bundle.js"></script>
+  <script defer type="module" src="/build/index.js"></script>
 </head>
 
 <body>
@@ -14,12 +14,12 @@
     <div class="display">
       <input readonly id="screen" type="text" placeholder="0" />
     </div>
-    <div class="btns" onclick="uiclick(event)">
+    <div class="btns" id="btn-container">
       <div class="row groupedTwoButton">
-        <button onclick="toggle('degToggle')" id="degButton">DEG</button>
+        <button class="toggle-btn" id="degButton" data-toggle="degToggle">DEG</button>
         <button class="btn">F-E</button>
       </div>
-      <div class="row" onclick="memoryFunction(event)">
+      <div class="row" id="memory-function">
         <button>MC</button>
         <button>MR</button>
         <button>M+</button>
@@ -27,7 +27,7 @@
         <button>MS</button>
       </div>
       <div class="row groupedTwoButton removeMargin">
-        <button onclick="toggle()"> <svg width="700pt" height="700pt" version="1.1" viewBox="0 0 700 700"
+        <button  class="toggle-btn" data-toggle="nothing"> <svg width="700pt" height="700pt" version="1.1" viewBox="0 0 700 700"
             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <path
               d="m586.35 38.082c1.4531 0.023438 2.8867 0.63281 3.9062 1.668 1.0195 1.0352 1.6133 2.4766 1.6133 3.9297v472.64c0 1.4648-0.60547 2.9219-1.6406 3.9609-1.0352 1.0352-2.4922 1.6406-3.957 1.6406h-472.64c-5.3242 0.078125-7.0469-6.1992-3.957-9.5625l472.64-472.64c1.0547-1.0586 2.5469-1.6641 4.043-1.6445zm-5.6797 19.125-453.52 453.52h453.52z"
@@ -36,7 +36,7 @@
             class="hover-icon">
             <path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z"> </path>
           </svg></button>
-        <button onclick="toggle('functionToggle')"> <span style="margin-right: 5px;margin-bottom: 5px;">&#119943 </span>
+        <button class="toggle-btn" data-toggle="functionToggle"> <span style="margin-right: 5px;margin-bottom: 5px;">&#119943 </span>
           Function <svg width="4.7" height="8" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg"
             class="hover-icon">
             <path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z"> </path>
@@ -53,13 +53,13 @@
           </div>
           <div id="trigo_function" style="display: none;">
             <div class="row">
-              <button onclick="toggle('trigoToggle')" class="bg-white ">2<sup>nd</sup></button>
+              <button  class="bg-white toggle-btn" data-toggle="trigoToggle">2<sup>nd</sup></button>
               <button class="btn bg-white ">sin</button>
               <button class="btn bg-white ">cos</button>
               <button class="btn bg-white ">tan</button>
             </div>
             <div class="row">
-              <button onclick="toggle('hyperToggle')" class="bg-white ">hyp</button>
+              <button class="bg-white toggle-btn" data-toggle="hyperToggle">hyp</button>
               <button class="btn bg-white ">cosec</button>
               <button class="btn bg-white ">sec</button>
               <button class="btn bg-white ">cot</button>
@@ -71,8 +71,8 @@
         <button class="btn">&#8731</sup></button>
         <button class="btn">&#960</button>
         <button class="btn">e</button>
-        <button onclick="clearScreen(event)">C</button>
-        <button onclick="backFunction()"><svg version="1.1" viewBox="0 0 700 600" xmlns="http://www.w3.org/2000/svg">
+        <button id="clear-btn" >C</button>
+        <button id="back-btn" ><svg version="1.1" viewBox="0 0 700 600" xmlns="http://www.w3.org/2000/svg">
             <path
               d="m595 87.5h-332.5c-4.8984 0-9.625 2.1016-12.949 5.7734l-157.5 175c-5.9492 6.6484-5.9492 16.801 0 23.449l157.5 175c3.3242 3.6758 8.0508 5.7773 12.949 5.7773h332.5c9.625 0 17.5-7.875 17.5-17.5v-350c0-9.625-7.875-17.5-17.5-17.5zm-17.5 350h-307.12l-141.75-157.5 141.75-157.5h307.12zm-257.43-82.426 75.25-75.074-75.074-75.074c-6.8242-6.8242-6.8242-17.852 0-24.676s17.852-6.8242 24.676 0l75.074 75.074 75.074-75.074c6.8242-6.8242 17.852-6.8242 24.676 0s6.8242 17.852 0 24.676l-75.074 75.074 75.074 75.074c6.8242 6.8242 6.8242 17.852 0 24.676-3.3242 3.5-7.6992 5.25-12.25 5.25s-8.9258-1.75-12.426-5.0742l-75.074-75.25-75.074 75.074c-3.5 3.5-7.875 5.25-12.426 5.25s-8.9258-1.75-12.426-5.0742c-6.8242-6.8242-6.8242-18.027 0-24.852z" />
           </svg></button>
@@ -117,7 +117,7 @@
         <button class="btn bg-white">+/-</button>
         <button class="btn bg-white boldFont">0</button>
         <button class="btn bg-white">.</button>
-        <button class="bg-blue" onclick="finalAnswer(event)">=</button>
+        <button class="bg-blue" id="equals-btn">=</button>
       </div>
     </div>
   </div>

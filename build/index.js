@@ -1,6 +1,12 @@
 // All variable declarations
 var displayScreen = document.getElementById("screen");
 var trigoButton = document.querySelectorAll("#trigo_function .btn");
+var btnContainer = document.getElementById("btn-container");
+var memoryFunction = document.getElementById("memory-function");
+var equalBtn = document.getElementById("equals-btn");
+var clearBtn = document.getElementById("clear-btn");
+var backBtn = document.getElementById("back-btn");
+var toggleBtn = document.querySelectorAll(".toggle-btn");
 var data = {
     screen: [],
     operation: [],
@@ -15,10 +21,63 @@ var toggleFlag = {
     functionToggle: true,
 };
 //function that will be called whenever user clicks on the screen or button
-function uiclick(event) {
+btnContainer.addEventListener("click", function (event) {
     var targetElement = event.target;
     handleEvents(targetElement.innerText);
-}
+});
+// function that calculates and stores the data in the memory
+memoryFunction.addEventListener("click", function (event) {
+    var targetElement = event.target;
+    var operation = targetElement.innerHTML;
+    switch (operation) {
+        case "MS":
+            memory = eval(data.screen.join(""));
+            emptyarray();
+            displayScreen.value = "";
+            break;
+        case "MR":
+            if (memory === "") {
+                return;
+            }
+            else {
+                data.operation.push(memory);
+                data.screen.push(memory);
+                displayScreen.value = data.screen.join("");
+                break;
+            }
+        case "MC":
+            emptyarray();
+            memory = "";
+            displayScreen.value = "";
+            break;
+        case "M+":
+            memory = "".concat(Number(memory) + Number(eval(data.screen.join(""))));
+            displayScreen.value = "";
+            emptyarray();
+            break;
+        case "M-":
+            memory = "".concat(Number(memory) - Number(eval(data.screen.join(""))));
+            displayScreen.value = "";
+            emptyarray();
+            break;
+    }
+});
+equalBtn.addEventListener("click", function (event) {
+    finalAnswer(event);
+});
+clearBtn.addEventListener("click", function (event) {
+    clearScreen(event);
+});
+backBtn.addEventListener("click", function (event) {
+    backFunction();
+});
+toggleBtn.forEach(function (item) {
+    item.addEventListener("click", function (event) {
+        var clickedButton = event.target;
+        var operation = clickedButton.getAttribute("data-toggle");
+        toggle(operation);
+    });
+});
 // function that calculates the factorial of the given number
 var factorial = function (n) { return (!(n > 1) ? 1 : factorial(n - 1) * n); };
 // funtion for handling keyboard as well as click events
@@ -270,8 +329,6 @@ function handleEvents(btn) {
     data.operation.push(operation);
     data.screen.push(btnText);
     displayScreen.value = data.screen.join("");
-    console.log(data.screen);
-    console.log(data.operation);
 }
 // function that will return a string representing number between operators
 function findNumber() {
@@ -359,45 +416,6 @@ function backFunction() {
             : data.operation.pop();
     }
     displayScreen.value = data.screen.join("");
-}
-// function that calculates and stores the data in the memory
-function memoryFunction(event) {
-    var targetElement = event.target;
-    var operation = targetElement.innerHTML;
-    switch (operation) {
-        case "MS":
-            memory = eval(data.screen.join(""));
-            emptyarray();
-            displayScreen.value = "";
-            break;
-        case "MR":
-            if (memory === "") {
-                return;
-            }
-            else {
-                data.operation.push(memory);
-                data.screen.push(memory);
-                displayScreen.value = data.screen.join("");
-                console.log(data.screen);
-                console.log(data.operation);
-                break;
-            }
-        case "MC":
-            emptyarray();
-            memory = "";
-            displayScreen.value = "";
-            break;
-        case "M+":
-            memory = "".concat(Number(memory) + Number(eval(data.screen.join(""))));
-            displayScreen.value = "";
-            emptyarray();
-            break;
-        case "M-":
-            memory = "".concat(Number(memory) - Number(eval(data.screen.join(""))));
-            displayScreen.value = "";
-            emptyarray();
-            break;
-    }
 }
 // function that handles all the toggle operations (trigoToggle, inverseToggle , hyperToggle , degToggle , functionToggle)
 function toggle(value) {
