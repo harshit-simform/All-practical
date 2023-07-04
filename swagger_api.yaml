@@ -1,0 +1,50 @@
+openapi: 3.0.0
+info:
+  title: User Authentication and Querring in MongoDB
+  version: 1.0.0
+  description: This is user authentication project in this user can also post feedback/review regarding a particular product
+server:
+  url: http://localhost:8000/
+paths:
+  /api/feedback:
+    get:
+      summary: This route is used to get all feedback from the database
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  Total_Feedback:
+                    type: integer
+                  feedback:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        _id:
+                          type: string
+                        userId:
+                          type: object
+                          properties:
+                            _id:
+                              type: string
+                            name:
+                              type: string
+                            email:
+                              type: string
+                        message:
+                          type: string
+                        category:
+                          type: string
+                        rating:
+                          type: integer
+                        createdAt:
+                          type: string
+                          format: date-time
+                        _v:
+                          type: integer

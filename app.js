@@ -2,6 +2,10 @@ const express = require('express');
 const { I18n } = require('i18n');
 const cookieParser = require('cookie-parser');
 const path = require('path');
+const swaggerUi = require('swagger-ui-express');
+const YAML = require('yamljs');
+
+const swaggerDocs = YAML.load('./swagger_api.yaml');
 
 const {
   login,
@@ -60,6 +64,10 @@ app.get('/api/feedback', getAllFeedback);
 app.get('/api/feedback/:id', getFeedback);
 app.get('/api/averageRating/:id', averageRating);
 app.get('/api/averageRatingCategory', categoryData);
+
+// route for viewing api docs in swagger
+
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // for all routes that has not been defined
 app.all('*', (req, res) => {
