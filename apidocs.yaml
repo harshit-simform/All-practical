@@ -1,0 +1,755 @@
+openapi: 3.0.3
+info:
+  title: A simple E-commerce application
+  description: |-
+    This is a simple E-commerece application in which user can make orders of different prouducts and also can querry
+    customized data as user wants from including top product to top user everything in one place
+  contact:
+    email: harshit.g@simformsolutions.com
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000/
+tags:
+  - name: User
+    description: Everything about users
+  - name: Order
+    description: Everything about order
+  - name: Product
+    description: Everything about product
+  - name: Order Details
+    description: Everything about order_details
+  - name: Extra Details(querries)
+    description: Extra data about user , order , product
+paths:
+  /users:
+    post:
+      tags:
+        - User
+      summary: Create User
+      description: This route can be used to create new user.
+      operationId: createUser
+      requestBody:
+        description: Created user object
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserBody"
+      responses:
+        201:
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  User:
+                    $ref: "#/components/schemas/UserSchema"
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+    get:
+      tags:
+        - User
+      summary: Get All users
+      description: This route can be used to fetch all user.
+      operationId: getAllUser
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/userData"
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+  /users/{id}:
+    get:
+      tags:
+        - User
+      summary: Get Single User
+      description: Get user based on userId
+      operationId: getUserById
+      parameters:
+        - name: id
+          description: The id of the user
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/userData"
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+    patch:
+      tags:
+        - User
+      summary: Update User
+      description: Update user based on userId
+      operationId: updateUserById
+      parameters:
+        - name: id
+          description: The id of the user
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: user data that needs to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserBody"
+      responses:
+        200:
+          description: User Updated Successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+    delete:
+      tags:
+        - User
+      summary: Delete User
+      description: Delete user based on userId
+      operationId: deleteUserById
+      parameters:
+        - name: id
+          description: The id of the user
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        204:
+          description: User deleted successfully
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+
+  /orders:
+    post:
+      tags:
+        - Order
+      summary: Create Order
+      description: This route can be used to create new order.
+      operationId: createOrder
+      requestBody:
+        description: Created order object
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OrderBody"
+      responses:
+        201:
+          description: Order created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  Order:
+                    $ref: "#/components/schemas/OrderSchema"
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+    get:
+      tags:
+        - Order
+      summary: Get All Orders
+      description: This route can be used to fetch all order.
+      operationId: getAllOrders
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrderData"
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+  /orders/{id}:
+    get:
+      tags:
+        - Order
+      summary: Get Single Order
+      description: Get order based on orderId
+      operationId: getOrderById
+      parameters:
+        - name: id
+          description: The id of the order
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrderData"
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+    patch:
+      tags:
+        - Order
+      summary: Update Order
+      description: Update order based on orderId
+      operationId: updateOrderById
+      parameters:
+        - name: id
+          description: The id of the order
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Order data that needs to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OrderBody"
+      responses:
+        200:
+          description: Order Updated Successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+    delete:
+      tags:
+        - Order
+      summary: Delete Order
+      description: Delete user based on orderId
+      operationId: deleteOrderById
+      parameters:
+        - name: id
+          description: The id of the order
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        204:
+          description: Order deleted successfully
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+
+  /products:
+    post:
+      tags:
+        - Product
+      summary: Create Product
+      description: This route can be used to create new order.
+      operationId: createProduct
+      requestBody:
+        description: Created product object
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProductBody"
+      responses:
+        201:
+          description: Product created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  Product:
+                    $ref: "#/components/schemas/ProductSchema"
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+    get:
+      tags:
+        - Product
+      summary: Get All products
+      description: This route can be used to fetch all products.
+      operationId: getAllProducts
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProductData"
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+  /products/{id}:
+    get:
+      tags:
+        - Product
+      summary: Get Single Product
+      description: Get Product based on productId
+      operationId: getProductById
+      parameters:
+        - name: id
+          description: The id of the product
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProductData"
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+    patch:
+      tags:
+        - Product
+      summary: Update Product
+      description: Update product based on productId
+      operationId: updateProductById
+      parameters:
+        - name: id
+          description: The id of the product
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Product data that needs to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProductBody"
+      responses:
+        200:
+          description: Product Updated Successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+    delete:
+      tags:
+        - Product
+      summary: Delete Product
+      description: Delete product based on productId
+      operationId: deleteProductById
+      parameters:
+        - name: id
+          description: The id of the product
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        204:
+          description: Product deleted successfully
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+  /order_details:
+    post:
+      tags:
+        - Order Details
+      summary: Create Order_Details
+      description: This route can be used to create new order details.
+      operationId: createOrderDetails
+      requestBody:
+        description: Created Order Details object
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OrderDetailsBody"
+      responses:
+        201:
+          description: Order Details created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  Order Details:
+                    $ref: "#/components/schemas/OrderDetailsSchema"
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+    get:
+      tags:
+        - Order Details
+      summary: Get All Order_Details
+      description: This route can be used to fetch all Order Details.
+      operationId: getAllOrderDetails
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrderDetailsData"
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+  /order_details/{id}:
+    get:
+      tags:
+        - Order Details
+      summary: Get Single Order_Details
+      description: Get Order Details based on OrderDetailsId
+      operationId: getOrderDetailsById
+      parameters:
+        - name: id
+          description: The id of the Order Details
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrderDetailsData"
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+    patch:
+      tags:
+        - Order Details
+      summary: Update Order_Details
+      description: Update Order Details based on OrderDetailsId
+      operationId: updateOrderDetailsById
+      parameters:
+        - name: id
+          description: The id of the Order Details
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Order Details data that needs to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OrderDetailsBody"
+      responses:
+        200:
+          description: Order Details Updated Successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+    delete:
+      tags:
+        - Order Details
+      summary: Delete Order_Details
+      description: Delete Order Details based on OrderDetailstId
+      operationId: deleteOrderDetailsById
+      parameters:
+        - name: id
+          description: The id of the Order Details
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        204:
+          description: Order Details deleted successfully
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+
+  /user-data:
+    get:
+      tags:
+        - Extra Details(querries)
+      summary: Get user data along with their order
+      description: This route can be used to fetch all Order Details along with user and products.
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  totalOrder:
+                    type: integer
+                    example: 10
+                  orders:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: "#/components/schemas/OrderDetailsData"
+
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+
+components:
+  schemas:
+    UserBody:
+      type: object
+      properties:
+        name:
+          type: string
+          example: john
+        email:
+          type: string
+          example: John@gmail.com
+        password:
+          type: string
+          example: James@123
+        address:
+          type: string
+          example: Bavla , Ahmedabad
+      required:
+        - name
+        - email
+        - password
+        - address
+    OrderBody:
+      type: object
+      properties:
+        userId:
+          type: integer
+          example: 1
+        productId:
+          type: integer
+          example: 1
+        order_status:
+          type: string
+          example: pending
+        order_date:
+          type: string
+          format: date-time
+          example: 2023-06-02T00:00:00.000Z
+        delivery_date:
+          type: string
+          format: date-time
+          example: 2023-06-02T00:00:00.000Z
+      required:
+        - userId
+        - order_status
+        - productId
+    ProductBody:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Iphone
+        amount:
+          type: integer
+          example: 150000
+        description:
+          type: string
+          example: An over-priced smart phone that everyone want!!
+      required:
+        - title
+        - amount
+        - description
+    OrderDetailsBody:
+      type: object
+      properties:
+        orderId:
+          type: integer
+          example: 1
+        productId:
+          type: integer
+          example: 1
+      required:
+        - orderId
+        - productId
+
+    userData:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        Total Users:
+          type: integer
+          example: 10
+        Users:
+          type: array
+          items:
+            $ref: "#/components/schemas/UserSchema"
+    OrderData:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        Total Orders:
+          type: integer
+          example: 10
+        Orders:
+          type: array
+          items:
+            $ref: "#/components/schemas/OrderSchema"
+    ProductData:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        Total Products:
+          type: integer
+          example: 10
+        Products:
+          type: array
+          items:
+            $ref: "#/components/schemas/ProductSchema"
+    OrderDetailsData:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        Total Order Details:
+          type: integer
+          example: 10
+        Order Details:
+          type: array
+          items:
+            $ref: "#/components/schemas/OrderDetailsSchema"
+
+    UserSchema:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: integer
+              example: 1
+        - $ref: "#/components/schemas/UserBody"
+    OrderSchema:
+      allOf:
+        - $ref: "#/components/schemas/OrderBody"
+        - type: object
+          properties:
+            id: {} # Include the 'id' property from OrderSchema
+            order_status: {} # Include the 'order_status' property from OrderSchema
+            order_date: {} # Include the 'order_date' property from OrderSchema
+            delivery_date: {} # Include the 'delivery_date' property from OrderSchema
+
+    ProductSchema:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: integer
+              example: 1
+        - $ref: "#/components/schemas/ProductBody"
+    OrderDetailsSchema:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: integer
+              example: 1
+        - $ref: "#/components/schemas/OrderDetailsBody"
+
+  responses:
+    ErrorResponse500:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+              message:
+                type: string
+    ErrorResponse400:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+              message:
+                type: string

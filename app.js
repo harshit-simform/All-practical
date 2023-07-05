@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
 const dbConfig = require("./databaseConfig");
+const YAML = require("yamljs");
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocs = YAML.load("./apidocs.yaml");
 
 const userRouter = require("./users/userController");
 const productRouter = require("./product/productController");
@@ -48,5 +51,7 @@ app.get("/inactive-user", inactiveUser());
 app.get("/most-purchased-product", mostPurchasedProduct());
 app.get("/most-expensive-order", mostExpensiveOrder());
 app.get("/least-expensive-order", leastExpensiveOrder());
+
+app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 module.exports = app;
