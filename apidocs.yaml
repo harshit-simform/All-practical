@@ -407,6 +407,7 @@ paths:
           $ref: "#/components/responses/ErrorResponse400"
         500:
           $ref: "#/components/responses/ErrorResponse500"
+
   /order_details:
     post:
       tags:
@@ -559,14 +560,312 @@ paths:
                   orders:
                     type: array
                     items:
-                      allOf:
-                        - $ref: "#/components/schemas/OrderDetailsData"
-
+                      type: object
+                      properties:
+                        Id:
+                          type: integer
+                          example: 1
+                        order_status:
+                          type: string
+                          example: pending
+                        order_date:
+                          type: string
+                          format: date-time
+                          example: 2023-06-02T00:00:00.000Z
+                        delivery_date:
+                          type: string
+                          format: date-time
+                          example: 2023-06-02T00:00:00.000Z
+                        Expected_delivery_in_day:
+                          type: integer
+                          example: 5
+                        user:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                              example: john
+                        products:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              title:
+                                type: string
+                                example: Iphone
         400:
           $ref: "#/components/responses/ErrorResponse400"
         500:
           $ref: "#/components/responses/ErrorResponse500"
 
+  /undeliver-orders:
+    get:
+      tags:
+        - Extra Details(querries)
+      summary: Get all order's which are yet not delivered
+      description: This route can be used to fetch all Order which are not delivered.
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  totalOrder:
+                    type: integer
+                    example: 10
+                  orders:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        Id:
+                          type: integer
+                          example: 1
+                        order_status:
+                          type: string
+                          example: pending
+                        order_date:
+                          type: string
+                          format: date-time
+                          example: 2023-06-02T00:00:00.000Z
+                        delivery_date:
+                          type: string
+                          format: date-time
+                          example: 2023-06-02T00:00:00.000Z
+                        user:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                              example: john
+                            email:
+                              type: string
+                              example: john@gmail.com
+                        products:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 1
+                              title:
+                                type: string
+                                example: Iphone
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+
+  /most-recent-orders:
+    get:
+      tags:
+        - Extra Details(querries)
+      summary: Get orders which are ordered most recently
+      description: This route can be used to fetch all latest order placed in the system.
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  totalOrder:
+                    type: integer
+                    example: 10
+                  orders:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        Id:
+                          type: integer
+                          example: 1
+                        order_status:
+                          type: string
+                          example: pending
+                        order_date:
+                          type: string
+                          format: date-time
+                          example: 2023-06-02T00:00:00.000Z
+                        delivery_date:
+                          type: string
+                          format: date-time
+                          example: 2023-06-02T00:00:00.000Z
+                        user:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                              example: john
+                            email:
+                              type: string
+                              example: john@gmail.com
+                        products:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              title:
+                                type: string
+                                example: Iphone
+                              amount:
+                                type: integer
+                                example: 1000
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+
+  /top-active-user:
+    get:
+      tags:
+        - Extra Details(querries)
+      summary: Get details on which user has placed most orders
+      description: This route can be used to fetch top 5 users which has purchased most products.
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  totalUsers:
+                    type: integer
+                    example: 10
+                  users:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        userId:
+                          type: integer
+                          example: 1
+                        totalOrders:
+                          type: integer
+                          example: 5
+                        user:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                              example: john
+                            email:
+                              type: string
+                              example: John@gmail.com
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+
+  /inactive-user:
+    get:
+      tags:
+        - Extra Details(querries)
+      summary: Get details on which user has placed no orders
+      description: This route can be used to fetch all users which has purchased no products.
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  totalUsers:
+                    type: integer
+                    example: 10
+                  users:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: john
+                        email:
+                          type: string
+                          example: John@gmail.com
+                        address:
+                          type: string
+                          example: Bavla , Ahmedabad
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+
+  /most-purchased-product:
+    get:
+      tags:
+        - Extra Details(querries)
+      summary: Get details on which product is most purchased
+      description: This route can be used to fetch all top 5 products which users purchased the most.
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MostPurchasedProducts"
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+
+  /most-expensive-order:
+    get:
+      tags:
+        - Extra Details(querries)
+      summary: Get details on which order is most expensive
+      description: This route can be used to fetch an order which has the most amount of product purchased.
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrderAnalysis"
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
+
+  /least-expensive-order:
+    get:
+      tags:
+        - Extra Details(querries)
+      summary: Get details on which order is least expensive
+      description: This route can be used to fetch an order which has the least amount of product purchased.
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrderAnalysis"
+        400:
+          $ref: "#/components/responses/ErrorResponse400"
+        500:
+          $ref: "#/components/responses/ErrorResponse500"
 components:
   schemas:
     UserBody:
@@ -703,15 +1002,35 @@ components:
               type: integer
               example: 1
         - $ref: "#/components/schemas/UserBody"
+    # need to wok on this
     OrderSchema:
-      allOf:
-        - $ref: "#/components/schemas/OrderBody"
-        - type: object
-          properties:
-            id: {} # Include the 'id' property from OrderSchema
-            order_status: {} # Include the 'order_status' property from OrderSchema
-            order_date: {} # Include the 'order_date' property from OrderSchema
-            delivery_date: {} # Include the 'delivery_date' property from OrderSchema
+      type: object
+      properties:
+        Id:
+          type: integer
+          example: 1
+        userId:
+          type: integer
+          example: 1
+        order_status:
+          type: string
+          example: pending
+        order_date:
+          type: string
+          format: date-time
+          example: 2023-06-02T00:00:00.000Z
+        delivery_date:
+          type: string
+          format: date-time
+          example: 2023-06-02T00:00:00.000Z
+      # allOf:
+      #   - $ref: '#/components/schemas/OrderBody'
+      #   - type: object
+      #     properties:
+      #       id: {}  # Include the 'id' property from OrderSchema
+      #       order_status: {}  # Include the 'order_status' property from OrderSchema
+      #       order_date: {}  # Include the 'order_date' property from OrderSchema
+      #       delivery_date: {}  # Include the 'delivery_date' property from OrderSchema
 
     ProductSchema:
       allOf:
@@ -729,6 +1048,41 @@ components:
               type: integer
               example: 1
         - $ref: "#/components/schemas/OrderDetailsBody"
+
+    OrderAnalysis:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        orders:
+          type: array
+          items:
+            type: object
+            properties:
+              orderId:
+                type: integer
+                example: 1
+              Total Amount:
+                type: string
+                example: 1000
+              Product Purchased:
+                type: string
+                example: Product Name
+
+    MostPurchasedProducts:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        totalProduct:
+          type: integer
+          example: 5
+        products:
+          type: array
+          items:
+            $ref: "#/components/schemas/ProductBody"
 
   responses:
     ErrorResponse500:

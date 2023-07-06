@@ -23,7 +23,7 @@ exports.userData = () => async (req, res) => {
           dbConfig.sequelize.literal(
             "DATEDIFF(orders.delivery_date, orders.order_date)"
           ),
-          "Expected_delivery_date",
+          "Expected_delivery_in_day",
         ],
       ],
     });
@@ -117,7 +117,7 @@ exports.topActiveUser = () => async (req, res) => {
         "userId",
         [
           dbConfig.sequelize.fn("COUNT", dbConfig.sequelize.col("userId")),
-          "Total Orders",
+          "totalOrders",
         ],
       ],
       include: [
@@ -126,14 +126,14 @@ exports.topActiveUser = () => async (req, res) => {
           attributes: ["name", "email"],
         },
       ],
-      order: [["Total Orders", "DESC"]],
+      order: [["totalOrders", "DESC"]],
       limit: 5,
     });
 
     res.status(200).json({
       status: "success",
       totalUser: result.length,
-      orders: result,
+      users: result,
     });
   } catch (err) {
     res.status(500).json({
@@ -150,6 +150,7 @@ exports.inactiveUser = () => async (req, res) => {
       include: {
         model: dbConfig.Order,
         required: false,
+        attributes: [],
       },
       where: {
         "$orders.id$": null,
@@ -158,7 +159,7 @@ exports.inactiveUser = () => async (req, res) => {
     res.status(200).json({
       status: "success",
       totalUser: result.length,
-      orders: result,
+      users: result,
     });
   } catch (err) {
     res.status(500).json({
