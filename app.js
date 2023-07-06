@@ -54,4 +54,11 @@ app.get("/least-expensive-order", leastExpensiveOrder());
 
 app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
+app.all("*", (req, res) => {
+  res.status(404).json({
+    status: "fail",
+    message: "This route is not defined yet!!!",
+  });
+});
+
 module.exports = app;
