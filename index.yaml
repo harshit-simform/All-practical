@@ -1,0 +1,64 @@
+courses:
+  - course_name: "complete master backend with Node JS"
+    version: 1.0
+    price: &course_price 1999
+    is_public: true
+    release_date: 2023-07-03 12:32:15
+    pre_enroll: null
+    tags:
+      - nodejs
+      - mysql
+      - web development
+      - server side development
+      - api development
+      - payment integration
+    course_ta: ["Harshit", "Jeel"]
+    ta_details:
+      - name: "Harshit"
+        email: "harshit@simformsolutions.com"
+        role: ["admin", "developer", "mentor"]
+      - {
+          name: "Jeel",
+          email: "jeel@simformsolutions.com",
+          role: ["Node developer", "mentor"],
+        }
+    short_description: >
+      Here is a short description
+      for complete master bootcamp for backend
+    long_description: |
+      Here we can store many information 
+        with indentation as we want
+      got it
+    process_payment: *course_price
+  - course_name: "complete master frontend with React JS"
+    version: 1.5
+    price: &course_price 1750
+    is_public: true
+    release_date: 2023-07-13 12:32:15
+    pre_enroll: null
+    tags:
+      - HTML
+      - CSS
+      - Javascript
+      - GitHub
+      - api development
+      - Postman
+      - ReactJS
+    course_ta: ["Aman", "Neckvy"]
+    ta_details:
+      - name: "Aman"
+        email: "aman@simformsolutions.com"
+        role: ["Vue.js developer", "mentor"]
+      - {
+          name: "Neckvy",
+          email: "neckvy@simformsolutions.com",
+          role: ["Anglar developer", "mentor"],
+        }
+    short_description: >
+      Here is a short description
+      for complete master bootcamp for backend
+    long_description: |
+      Here we can store many information 
+        with indentation as we want
+      got it
+    process_payment: *course_price
