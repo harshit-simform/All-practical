@@ -13,6 +13,9 @@ const app = require("./app.js");
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`server listening on port ${port}`);
 });
+// console.log(dbConfig.User);
+
+module.exports = { server, dbConfig };

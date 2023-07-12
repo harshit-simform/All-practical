@@ -1,12 +1,18 @@
 const { Sequelize, Model, DataTypes, Op } = require("sequelize");
 
+const databaseName =
+  process.env.NODE_ENV === "testing"
+    ? process.env.MYSQL_DATABASE_TEST
+    : process.env.MYSQL_DATABASE;
+
 const sequelize = new Sequelize(
-  process.env.MYSQL_DATABASE,
+  databaseName,
   process.env.MYSQL_USER,
   process.env.MYSQL_PASSWORD,
   {
     host: process.env.MYSQL_HOST,
     dialect: process.env.DATABASE_DIALECT,
+    logging: false,
   }
 );
 

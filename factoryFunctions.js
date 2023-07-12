@@ -29,7 +29,7 @@ exports.getData = (Model, title) => async (req, res, next) => {
       [title]: data,
     });
   } catch (err) {
-    const statusCode = err instanceof Error ? 400 : 500;
+    const statusCode = err instanceof Error ? 404 : 500;
     res.status(statusCode).json({
       status: "fail",
       message: err.message,
@@ -81,7 +81,7 @@ exports.updateData = (Model, title, fileds) => async (req, res, next) => {
       message: `${title} updated successfully!`,
     });
   } catch (err) {
-    const statusCode = err instanceof Error ? 400 : 500;
+    const statusCode = err instanceof Error ? 404 : 500;
     res.status(statusCode).json({
       status: "fail",
       message: err.message,
@@ -103,7 +103,7 @@ exports.deleteData = (Model, title) => async (req, res, next) => {
       message: `${title} deleted successfully!`,
     });
   } catch (err) {
-    const statusCode = err instanceof Error ? 400 : 500;
+    const statusCode = err instanceof Error ? 404 : 500;
     res.status(statusCode).json({
       status: "fail",
       message: err.message,
